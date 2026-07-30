@@ -1,0 +1,41 @@
+Service	Connection
+PostgreSQL	Host=localhost;Port=5432;Username=root;Password=password;Database=mydatabase
+MySQL	Server=localhost;Port=3306;User=root;Password=password;Database=mydatabase
+MongoDB	mongodb://root:password@localhost:27017/?authMechanism=SCRAM-SHA-1&authSource=admin
+Redis	localhost:6379
+RabbitMQ	amqp://admin:password@localhost:5672
+SQL Server	Server=localhost,1433;User Id=sa;Password=YourSecurePassword123!;TrustServerCertificate=True;
+
+
+1. Check what is installed
+
+Run:
+
+brew list | grep -E "mongo|redis"
+
+You may see something like:
+
+mongodb-community
+mongodb-database-tools
+mongosh
+redis
+
+
+2. Uninstall MongoDB
+
+If installed as mongodb-community:
+
+brew uninstall mongodb-community
+
+If you have a versioned package:
+
+brew uninstall mongodb-community@8.0
+
+If you also have the shell:
+
+brew uninstall mongosh
+
+If you have MongoDB tools:
+
+brew uninstall mongodb-database-tools
+

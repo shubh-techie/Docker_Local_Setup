@@ -1,9 +1,9 @@
-﻿using FirstApp.Consumers;
+using FirstApp.Jobs;
 using Microsoft.Extensions.Hosting;
 
 var builder = Host.CreateApplicationBuilder(args);
 
-builder.Services.AddRabbitMqConsumers(builder.Configuration);
+builder.Services.AddScheduledJobs(builder.Configuration);
 
 var host = builder.Build();
 await host.RunAsync();

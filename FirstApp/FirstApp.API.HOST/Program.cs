@@ -1,22 +1,13 @@
-﻿using System.Text.Json;
-using FirstApp.Configuration;
+﻿using FirstApp.API;
+using Microsoft.AspNetCore.Builder;
 
-namespace FirstApp.API.HOST;
+var builder = WebApplication.CreateBuilder(args);
 
-class Program
-{
-    static Customer customer;
-    
-    static void Main(string[] args)
-    {
-        Console.WriteLine(GetCustomer());
-        Console.WriteLine("Hello, World!");
-    }
+builder.Services.AddFirstAppApi();
 
-    private static string GetCustomer()
-    {
-        customer = new Customer();
-        var result = customer.GetCustomer();
-        return JsonSerializer.Serialize(result);
-    }
-}
+var app = builder.Build();
+
+app.UseHttpsRedirection();
+app.MapControllers();
+
+app.Run();
